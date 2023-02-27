@@ -21,6 +21,7 @@ io.on('connection', (socket) => {
     console.log('user connected ' + socket.id)
 
     socket.on('message', (message) => {
+        console.log('Data que traes message ' + message)
         socket.broadcast.emit('message', {
             body: message,
             from: socket.id
