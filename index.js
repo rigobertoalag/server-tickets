@@ -21,11 +21,19 @@ io.on('connection', (socket) => {
     console.log('user connected ' + socket.id)
 
     socket.on('message', (message) => {
-        console.log('Data que traes message ' + message)
         socket.broadcast.emit('message', {
             body: message,
             from: socket.id
         })
+    })
+
+    socket.on('message_removed', (message) => {
+        console.log('desde message_removed', message)
+        socket.broadcast.emit('message_removed', message)
+        // socket.broadcast.emit('message', {
+        //     body: message,
+        //     from: socket.id
+        // })
     })
 })
 
